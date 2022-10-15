@@ -1,0 +1,33 @@
+social media application
+
+use cases
+1. users can login/register
+2. users can create posts
+3. users can write comments
+4. users can follow people
+5. users can get notifications (about comments)
+6. users can get correctly sized images
+7. users can see other people's profiles
+8. users can like other people's posts
+9. users can get profile recommendations based on who they follow and whose posts they have liked or commented on. 
+10. admin can delete harmful content
+
+delete all posts older than day/week
+
+battleship game
+1. users can create game
+2. users can join game to play
+3. users can join game to spectate
+4. users can write comments
+5. users can read comments
+
+tapahtumat käsittelee lambda
+
+
+https://aws.amazon.com/blogs/mobile/aws-appsync-real-time-reference-architecture/
+
+https://medium.com/open-graphql/aws-appsync-serverless-graphql-real-time-reference-architecture-19b16f5e9b93
+
+https://aws.amazon.com/getting-started/hands-on/?intClick=dev-center-2021_main&getting-started-all.sort-by=item.additionalFields.sortOrder&getting-started-all.sort-order=asc&awsf.getting-started-category=*all&awsf.getting-started-level=*all&awsf.getting-started-content-type=*all
+
+https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/?intClick=gsdir_updated
