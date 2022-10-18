@@ -6,7 +6,9 @@ export default function Profile(props) {
     let [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch("https://tpmkm4b3d6.execute-api.us-east-1.amazonaws.com/prod/profiles/0/posts")
+        let url = window.location.href;
+        let profile_id = url.slice(url.indexOf("profile/")+8).replace("/", "");
+        fetch(`https://tpmkm4b3d6.execute-api.us-east-1.amazonaws.com/prod/profiles/${profile_id}/posts`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
