@@ -44,6 +44,14 @@ header {
     width: 60%;
 }
 
+.post-search-form {
+    margin: 1em;
+}
+
+.post-search-form input[type=submit] {
+    background-color: var(--color1);
+}
+
 textarea {
     height: 100px;
 }
