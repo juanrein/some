@@ -1,48 +1,26 @@
-export default function App(props) {
-    let posts = [
-        {
-            "title": "hello",
-            "content": "hello, hello. Nothing important",
-            "comments": [
-                {
-                    "text": "fdafasd"
-                },
-                {
-                    "text": "fdffasdf"
-                }
-            ],
-            "user": 0
-        },
-        {
-            "title": "bye",
-            "content": "what is this",
-            "comments": [
-                {
-                    "text": "e2312"
-                }
-            ],
-            "user": 0
-        },
-        {
-            "title": "you",
-            "content": "whafdas",
-            "comments": [],
-            "user": 0
-        },
-    ]
+import { useEffect, useState } from "react"
+import Header from "../src/Header"
+import "../src/App.css";
+
+export default function Profile(props) {
+    let [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        fetch("https://tpmkm4b3d6.execute-api.us-east-1.amazonaws.com/prod/profiles/0/posts")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setPosts(data);
+        })
+        .catch(e => console.error(e));
+    }, [])
+
     return <div>
-        <header>
-            <div><a href="/">Some</a></div>
-            <form>
-                <input type="text" name="" id="" />
-                <input type="password" name="" id="" />
-                <input type="submit" value="login" />
-            </form>
-        </header>
+        <Header />
         <main>
+            <h1>Profile</h1>
             {posts.map(post => (
-                <div>
-                    <h1>{post.title}</h1>
+                <div key={post.post_id} className="post">
                     <div>{post.content}</div>
                 </div>
             ))}

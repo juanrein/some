@@ -1,55 +1,54 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+import Header from './Header'
 import Post from './Post'
 
 function App() {
-    let posts = [
-        {
-            "title": "hello",
-            "content": "hello, hello. Nothing important",
-            "comments": [
-                {
-                    "text": "fdafasd"
-                },
-                {
-                    "text": "fdffasdf"
-                }
-            ],
-            "user": 0,
-            "media": "/images/image1.jpg"
-        },
-        {
-            "title": "bye",
-            "content": "what is this",
-            "comments": [
-                {
-                    "text": "e2312"
-                }
-            ],
-            "user": 1,
-            "media": "/images/image2.jpg"
-        },
-        {
-            "title": "you",
-            "content": "whafdas",
-            "comments": [],
-            "user": 1,
-            "media": ""
-        },
-    ]
+    let [posts, setPosts] = useState([]);
+    let [textAreaValue, setTextAreaValue] = useState("");
+
+    useEffect(() => {
+        fetch("https://tpmkm4b3d6.execute-api.us-east-1.amazonaws.com/prod/profiles/0/posts")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setPosts(data);
+        })
+        .catch(e => console.error(e));
+    }, [])
+
+    function handleCommentSend() {
+        let fields = {
+            "content": textAreaValue
+        }
+        fetch("https://tpmkm4b3d6.execute-api.us-east-1.amazonaws.com/prod/profiles/0/posts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(fields)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(e => console.error(e));
+    }
+
     return (
         <div className="App">
-            <header>
-                <div><a href="/">Some</a></div>
-                <form>
-                    <input type="text" name="" id="" />
-                    <input type="password" name="" id="" />
-                    <input type="submit" value="login" />
-                </form>
-            </header>
+            <Header />
 
             <main>
-                {posts.map(post => (<Post {...post} />))}
+                <form className='create-comment-form' onSubmit={e => {
+                    e.preventDefault();
+                    handleCommentSend();
+                }}>
+                    <h1>Create post</h1>
+                    <textarea value={textAreaValue} onChange={e => setTextAreaValue(e.target.value)} />
+                    <input type="submit" value="submit" />
+                </form>
+                {posts.map(post => (<Post key={post.post_id} {...post} />))}
             </main>
         </div>
     )

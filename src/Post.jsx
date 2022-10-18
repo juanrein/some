@@ -1,8 +1,6 @@
 export default function Post(props) {
-    return <div>
-        <h1>{props.title}</h1>
+    return <div className="post">
+        <a href={`/profile/${props.profile_id}`}>profile</a>
         <div>{props.content}</div>
-        <a href="/profile/">profile</a>
-        <img src={props.media}/>
     </div>
 }

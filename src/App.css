@@ -1,3 +1,54 @@
-img {
-    width: 100%;
+/* https://colorhunt.co/palette/fdfdbdc8ffd4b8e8fcb1afff */
+:root {
+    --color1: rgb(253, 253, 189);
+    --color2: rgb(200, 255, 212);
+    --color3: rgb(184, 232, 252);
+    --color4: rgb(177, 175, 255);
+}
+
+
+header {
+    background-color: var(--color1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: large;
+    text-decoration: none;
+    padding: 1em;
+    text-transform: uppercase;
+    background-color: var(--color3);
+}
+
+.logo a:hover {
+    background-color: var(--color4);
+}
+
+.post {
+    background-color: var(--color3);
+    margin: 1em;
+    padding: 1em;
+}
+
+.post div {
+    margin: 1em;
+}
+
+.create-comment-form {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+textarea {
+    height: 100px;
+}
+
+.create-comment-form input {
+    width: 100px;
+    background-color: var(--color1);
 }
